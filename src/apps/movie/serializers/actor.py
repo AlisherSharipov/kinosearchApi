@@ -18,7 +18,7 @@ class ActorSerializer(serializers.ModelSerializer):
         today = date.today()
         age = today.year - obj.date_of_birth.year - (
                 (today.month, today.day) < (obj.date_of_birth.month, obj.date_of_birth.day))
-        return (age)
+        return age
 
     @staticmethod
     def get_cinema_count(obj: Actor):

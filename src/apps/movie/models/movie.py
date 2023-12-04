@@ -11,8 +11,6 @@ class Movie(models.Model):
     actor = models.ManyToManyField(Actor, related_name='movies')
     description = models.TextField("Описание", blank=True)
     viewers = models.ManyToManyField(User, through='UserMovieRelation', related_name='movies')
-    review = models.ForeignKey()
-
     def __str__(self):
         return self.title
 
@@ -31,3 +29,4 @@ class UserMovieRelation(models.Model):
     like = models.BooleanField(default=False)
     in_movie_favorites = models.BooleanField(default=False)
     rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES)
+    text = models.TextField("Сообщение", max_length=5000, blank=True)
